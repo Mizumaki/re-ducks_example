@@ -1,14 +1,14 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import commentsActions from '../actions/comments';
 
-export interface CommentsState {
+export interface ICommentsState {
   hasError: boolean;
   isLoading: boolean;
   comments: string[];
   url: string;
 }
 
-const initialState: CommentsState = {
+const initialState: ICommentsState = {
   hasError: false,
   isLoading: false,
   comments: [],

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const App = (props: any) => {
+const Comments = (props: any) => {
   if (props.hasError) {
     return <p> error </p>;
   }
@@ -19,4 +19,4 @@ const App = (props: any) => {
   );
 }
 
-export default App;
+export default Comments;

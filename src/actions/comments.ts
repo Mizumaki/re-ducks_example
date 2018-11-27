@@ -3,8 +3,8 @@ import actionCreatorFactory from 'typescript-fsa';
 const actionCreator = actionCreatorFactory();
 
 const commentsActions = {
+  fetch: actionCreator.async<{ url: string }, { comments: string[] }, { hasError: boolean }>('FETCH_COMMENTS'),
   loading: actionCreator<{ isLoading: boolean }>('LOAD_COMMENTS'),
-  fetch: actionCreator.async<{ url: string }, { comments: string[] }, { hasError: boolean }>('FETCH_COMMENTS')
 };
 
 export default commentsActions;

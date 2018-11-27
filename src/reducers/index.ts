@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { CommentsState, commentsReducer } from './comments';
+import { ICommentsState, commentsReducer } from './comments';
 
-export type AppState = {
-  comments: CommentsState
+export interface IAppState {
+  comments: ICommentsState
 }
 
-export const reducers = combineReducers<AppState>({ comments: commentsReducer })
+export const reducers = combineReducers<IAppState>({ comments: commentsReducer })
 
 export default reducers;
