@@ -1,10 +1,11 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import commentsActions from '../actions/comments';
+import { IComments } from '../api/getComments';
 
 export interface ICommentsState {
   hasError: boolean;
   isLoading: boolean;
-  comments: string[];
+  comments: IComments[];
 }
 
 const initialState: ICommentsState = {
@@ -14,14 +15,14 @@ const initialState: ICommentsState = {
 };
 
 export const commentsReducer = reducerWithInitialState(initialState)
-  .case(commentsActions.loading, (state, isLoading) => {
-    return Object.assign({}, state, isLoading);
+  .case(commentsActions.loading, (state, payload) => {
+    return Object.assign({}, state, { isLoading: payload.isLoading });
   })
-  .case(commentsActions.fetch.done, (state, comments) => {
-    return Object.assign({}, state, { comments: comments.result.comments })
+  .case(commentsActions.fetch.done, (state, payload) => {
+    return Object.assign({}, state, { comments: payload.result.comments })
   })
-  .case(commentsActions.fetch.failed, (state, hasError) => {
-    return Object.assign({}, state, hasError)
+  .case(commentsActions.fetch.failed, (state, payload) => {
+    return Object.assign({}, state, { hasError: payload.error.hasError })
   })
 
 export default commentsReducer;

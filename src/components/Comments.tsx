@@ -1,13 +1,8 @@
 import * as React from 'react';
-// import { IComments } from '../api/getComments';
-
-interface IComments {
-  params: string;
-  result: { comments: string[] };
-}
+import { ICommentsState } from 'src/reducers/comments';
 
 class Comments extends React.Component<any> {
-  constructor(props: { hasError: boolean; isLoading: boolean; comments: IComments }) {
+  constructor(props: ICommentsState) {
     super(props);
   }
 
@@ -29,6 +24,8 @@ class Comments extends React.Component<any> {
             {item.comment}
           </li>
         ))}
+        {/*
+        */}
       </ul>
     );
   }

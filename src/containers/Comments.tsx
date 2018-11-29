@@ -14,7 +14,6 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => {
   }
 };
 
-// Container
 const Comments = connect(
   mapStateToProps, mapDispatchToProps
 )(CommentsComponent)
