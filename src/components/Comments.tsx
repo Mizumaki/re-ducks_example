@@ -1,22 +1,37 @@
 import * as React from 'react';
+// import { IComments } from '../api/getComments';
 
-const Comments = (props: any) => {
-  if (props.hasError) {
-    return <p> error </p>;
-  }
-  if (props.isLoading) {
-    return <p> Loading...</p>;
+interface IComments {
+  params: string;
+  result: { comments: string[] };
+}
+
+class Comments extends React.Component<any> {
+  constructor(props: { hasError: boolean; isLoading: boolean; comments: IComments }) {
+    super(props);
   }
 
-  return (
-    <ul>
-      {props.comments.map((item: any) => (
-        <li key={item.id}>
-          {item.comment}
-        </li>
-      ))}
-    </ul>
-  );
+  public componentDidMount = () => {
+    this.props.fetchData('https://594ecc215fbb1a00117871a4.mockapi.io/comments');
+  }
+
+  public render() {
+    if (this.props.hasError) {
+      return <p> error </p>;
+    }
+    if (this.props.isLoading) {
+      return <p> Loading...</p>;
+    }
+    return (
+      <ul>
+        {this.props.comments.map((item: any) => (
+          <li key={item.id}>
+            {item.comment}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 }
 
 export default Comments;
