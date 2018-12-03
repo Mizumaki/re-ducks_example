@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICommentsState } from 'src/reducers/comments';
+import { ICommentsState } from '../../states/ducks/comments';
 
 class Comments extends React.Component<any> {
   constructor(props: ICommentsState) {
