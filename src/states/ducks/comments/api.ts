@@ -1,13 +1,13 @@
+import { throwError } from 'rxjs';
+
 export interface IComments {
   id: string;
   comment: string;
 }
 
-const getComments = async (url: string) => {
+export const getComments = async (url: string) => {
   return await fetch(url)
     .then(response => response.json())
     .then(comments => comments)
-    .catch((e: string) => e);
+    .catch((e: string) => throwError(e));
 }
-
-export default getComments;

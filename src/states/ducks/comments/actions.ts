@@ -1,11 +1,11 @@
 import actionCreatorFactory from 'typescript-fsa';
-import { IComments } from '../states/ducks/comments/api';
+import { IComments } from './api';
 
 const actionCreator = actionCreatorFactory();
 
-const commentsActions = {
+const actions = {
   fetch: actionCreator.async<{ url: string }, { comments: IComments[] }, { hasError: boolean }>('FETCH_COMMENTS'),
   loading: actionCreator<{ isLoading: boolean }>('LOAD_COMMENTS'),
 };
 
-export default commentsActions;
+export default actions;

@@ -1,6 +1,6 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import commentsActions from '../actions/comments';
-import { IComments } from '../states/ducks/comments/api';
+import commentsActions from './actions';
+import { IComments } from './api';
 
 export interface ICommentsState {
   hasError: boolean;
@@ -14,7 +14,7 @@ const initialState: ICommentsState = {
   comments: [],
 };
 
-export const commentsReducer = reducerWithInitialState(initialState)
+const reducer = reducerWithInitialState(initialState)
   .case(commentsActions.loading, (state, payload) => {
     return Object.assign({}, state, { isLoading: payload.isLoading });
   })
@@ -25,4 +25,4 @@ export const commentsReducer = reducerWithInitialState(initialState)
     return Object.assign({}, state, { hasError: payload.error.hasError })
   })
 
-export default commentsReducer;
+export default reducer;

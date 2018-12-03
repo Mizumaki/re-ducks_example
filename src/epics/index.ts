@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
-import commentsFetchEpic from './comments';
+import commentsFetchEpic from '../states/ducks/comments/epics';
 
 const epics = combineEpics(
   commentsFetchEpic

@@ -1,10 +1,9 @@
 import { Action } from 'redux';
 import { of, from, concat } from 'rxjs';
-import { map, mergeMap, /*catchError*/ } from 'rxjs/operators';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 import { Epic, ofType } from 'redux-observable';
-import { IComments } from '../api/getComments';
-import commentsActions from '../actions/comments';
-import getComments from '../api/getComments';
+import commentsActions from './actions';
+import { getComments, IComments } from './api';
 
 interface IPayloadAction extends Action {
   type: string;
@@ -18,7 +17,7 @@ const commentsFetchEpic: Epic<IPayloadAction> = (actions$) => actions$.pipe(
     from(getComments(action.payload.url)).pipe(
       map((comments: IComments[]) => commentsActions.fetch.done({ params: action.payload.url, result: { comments } })),
       // TODO: 以下ではError handlingができない
-      // catchError(error => of(commentsActions.fetch.failed({ params: action.payload.url, error: { hasError: true } }))),
+      catchError(error => of(commentsActions.fetch.failed({ params: action.payload.url, error: { hasError: true } }))),
     ),
     of(commentsActions.loading({ isLoading: false })),
   )),
