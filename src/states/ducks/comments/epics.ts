@@ -4,11 +4,15 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import { Epic, ofType } from 'redux-observable';
 import commentsActions from './actions';
-import { IComments } from './api';
 
 interface IPayloadAction extends Action {
   type: string;
   payload?: any;
+}
+
+export interface IComments {
+  id: number;
+  comment: string;
 }
 
 const commentsFetchEpic: Epic<IPayloadAction> = (actions$) => actions$.pipe(

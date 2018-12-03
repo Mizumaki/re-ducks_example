@@ -1,6 +1,6 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import commentsActions from './actions';
-import { IComments } from './api';
+import { IComments } from './epics';
 
 export interface ICommentsState {
   hasError: boolean;

@@ -1,5 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa';
-import { IComments } from './api';
+import { IComments } from './epics';
 
 const actionCreator = actionCreatorFactory();
 
