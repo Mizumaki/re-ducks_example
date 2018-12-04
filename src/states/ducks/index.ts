@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
-import commentsReducer, { ICommentsState } from './comments/index';
-import commentsFetchEpic from './comments/epics';
+import commentsReducer, { ICommentsState, commentsFetchEpic } from './comments/index';
 
 export interface IAppState {
   comments: ICommentsState
